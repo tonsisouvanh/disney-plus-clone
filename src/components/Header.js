@@ -7,22 +7,40 @@ import AddIcon from "@mui/icons-material/Add";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import StarPurple500Icon from "@mui/icons-material/StarPurple500";
 import tons from "../asset/tons.png";
+
+import { Link } from "react-router-dom";
+
 const iconWidth = "1.3rem";
 const menusList = [
-  { icon: <HomeIcon style={{ width: iconWidth }} />, menuName: "HOME" },
-  { icon: <SearchIcon style={{ width: iconWidth }} />, menuName: "SEARCH" },
-  { icon: <AddIcon style={{ width: iconWidth }} />, menuName: "WATCHLIST" },
+  {
+    icon: <HomeIcon style={{ width: iconWidth }} />,
+    menuName: "HOME",
+    path: "/",
+  },
+  {
+    icon: <SearchIcon style={{ width: iconWidth }} />,
+    menuName: "SEARCH",
+    path: "#",
+  },
+  {
+    icon: <AddIcon style={{ width: iconWidth }} />,
+    menuName: "WATCHLIST",
+    path: "#",
+  },
   {
     icon: <MovieFilterIcon style={{ width: iconWidth }} />,
     menuName: "MOVIES",
+    path: "#",
   },
   {
     icon: <LocalMoviesIcon style={{ width: iconWidth }} />,
     menuName: "SERIES",
+    path: "#",
   },
   {
     icon: <StarPurple500Icon style={{ width: iconWidth }} />,
     menuName: "ORIGINALS",
+    path: "#",
   },
 ];
 
@@ -30,14 +48,18 @@ const Header = () => {
   return (
     <>
       <Nav>
-        <Logo src="https://res.cloudinary.com/shoppin/image/upload/v1643862214/Disneyplus/logo_ysmbxj.svg"></Logo>
+        <Link to="/">
+          <Logo src="https://res.cloudinary.com/shoppin/image/upload/v1643862214/Disneyplus/logo_ysmbxj.svg"></Logo>
+        </Link>
         <NavMenu>
-          {menusList.map((item) => {
+          {menusList.map((item, index) => {
             return (
-              <Menu>
-                {item.icon}
-                <span>{item.menuName}</span>
-              </Menu>
+              <Link key={index} className="link" to="/">
+                <Menu>
+                  {item.icon}
+                  <span>{item.menuName}</span>
+                </Menu>
+              </Link>
             );
           })}
         </NavMenu>
@@ -48,13 +70,17 @@ const Header = () => {
 };
 
 const Nav = styled.nav`
-  min-height: 7vh;
+  top: 0;
+  width: 100%;
+  min-height: 8vh;
   background-color: #090b13;
+  font-weight: 500;
   color: #ffffff;
-  position: sticky;
+  position: fixed;
   z-index: 100;
   display: flex;
   align-items: center;
+
   padding: 0 1.5rem;
   overflow-x: hidden;
 `;
@@ -69,6 +95,11 @@ const NavMenu = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
+
+  .link {
+    text-decoration: none;
+    color: #ffffff;
+  }
 `;
 
 const Menu = styled.div`
@@ -89,6 +120,7 @@ const Menu = styled.div`
       right: 0;
       bottom: -0.2rem;
       transform: scaleX(0);
+      transform-origin: left;
       transition: all ease 0.3s;
     }
     &:hover {
@@ -100,7 +132,7 @@ const Menu = styled.div`
 `;
 
 const Avatar = styled.img`
-  width: 2.7rem;
+  width: 2.9rem;
   border-radius: 50%;
   border: 2px solid #ffffff;
   object-fit: contain;

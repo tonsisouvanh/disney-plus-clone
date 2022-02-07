@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const ImageSlider = () => {
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,7 +37,12 @@ const ImageSlider = () => {
 };
 
 const Carousel = styled(Slider)`
-  margin-top: 20px;
+  margin-top: 6rem;
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 2rem;
+    display: none;
+  }
 
   ul li button {
     &:before {

@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+
+
 const Viewer = () => {
   return (
     <>
@@ -46,16 +48,14 @@ const Container = styled.div`
   width: 100%;
   display: grid;
   margin: 2rem 0 0 0;
-  padding: 4rem 0 0 0;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 1rem 0 1rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 25px;
-  /* align-items: center; */
-  /* justify-content: space-evenly; */
 `;
 
 const ViewCard = styled.div`
   border: 3px solid rgba(249, 249, 249, 0.1);
-  border-radius: 1.2rem;
+  border-radius: 0.4rem;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
     rgb(0 0 0/ 73%) 0px 16px 10px -10px;
   cursor: pointer;
