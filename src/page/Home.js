@@ -17,7 +17,6 @@ const Home = () => {
   useEffect(() => {
     const getMovies = async () => {
       const data = await getDocs(productCollectionRef);
-      // setMovies(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       let tempMovie = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       dispatch(setMovies(tempMovie));
     };

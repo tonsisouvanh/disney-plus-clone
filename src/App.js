@@ -6,7 +6,7 @@ import Detail from "./components/Detail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Login from "./page/Login";
-
+import Test from './components/test'
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="detail/:id" element={<Detail />}></Route>
           <Route path="login" element={<Login />}></Route>
+          <Route path="test" element={<Test />}></Route>
         </Routes>
         {/* <Footer></Footer> */}
       </BrowserRouter>

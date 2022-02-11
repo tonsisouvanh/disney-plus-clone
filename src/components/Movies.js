@@ -6,34 +6,32 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-
+import { Link } from "react-router-dom";
 import { selectMovies } from "../features/movie/movieSlice";
 import { useSelector } from "react-redux";
 
 const Movies = () => {
   const movies = useSelector(selectMovies);
 
-  console.log("movies", movies);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-  };
-
   return (
     <>
       <MovieContainer>
         <h3>Recommended For You</h3>
         <Container>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-ironman1.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
+          {movies &&
+            movies.map((movie) => {
+              return (
+                <Wrap key={movie.id}>
+                  <Link className="link" to={`/detail/${movie.id}`}>
+                    <CardHover className="card-hove-active"></CardHover>
+                    <PlayCircleOutlineIcon className="playIcon" />
+                  </Link>
+                  <img src={movie.image} alt=""></img>
+                </Wrap>
+              );
+            })}
+
+          {/* <Wrap>
             <CardHover className="card-hove-active"></CardHover>
             <PlayCircleOutlineIcon className="playIcon" />
             <img src="/images/movie-ironman2.jpg" alt=""></img>
@@ -72,7 +70,7 @@ const Movies = () => {
             <CardHover className="card-hove-active"></CardHover>
             <PlayCircleOutlineIcon className="playIcon" />
             <img src="/images/movie-spiderman3.jpg" alt=""></img>
-          </Wrap>
+          </Wrap> */}
         </Container>
       </MovieContainer>
     </>
@@ -85,6 +83,11 @@ const MovieContainer = styled.div`
     font-weight: 500;
     color: #e5e5e5;
     letter-spacing: 1.5px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: white;
   }
 `;
 const Container = styled.div`

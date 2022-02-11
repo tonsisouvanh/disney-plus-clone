@@ -6,9 +6,10 @@ import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import AddIcon from "@mui/icons-material/Add";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
 import StarPurple500Icon from "@mui/icons-material/StarPurple500";
-import tons from "../asset/tons.png";
-
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+import { selectUserName, selectUserPhoto } from "../features/user/userSlice";
 
 const iconWidth = "1.3rem";
 const menusList = [
@@ -45,25 +46,37 @@ const menusList = [
 ];
 
 const Header = () => {
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+
   return (
     <>
       <Nav>
         <Link to="/">
-          <Logo src="https://res.cloudinary.com/shoppin/image/upload/v1643862214/Disneyplus/logo_ysmbxj.svg"></Logo>
+          <Logo src="/images/logo.svg"></Logo>
         </Link>
-        <NavMenu>
-          {menusList.map((item, index) => {
-            return (
-              <Link key={index} className="link" to="/">
-                <Menu>
-                  {item.icon}
-                  <span>{item.menuName}</span>
-                </Menu>
-              </Link>
-            );
-          })}
-        </NavMenu>
-        <Avatar src={tons}></Avatar>
+
+        {!userName ? (
+          <LoginButton>LOGIN</LoginButton>
+        ) : (
+          <NavMenu>
+            {menusList.map((item, index) => {
+              return (
+                <Link key={index} className="link" to="/">
+                  <Menu>
+                    {item.icon}
+                    <span>{item.menuName}</span>
+                  </Menu>
+                </Link>
+              );
+            })}
+            <Avatar
+              src={
+                "https://res.cloudinary.com/shoppin/image/upload/v1644499768/disney_plus_clone/images/avatar_wckrba.jpg"
+              }
+            ></Avatar>
+          </NavMenu>
+        )}
       </Nav>
     </>
   );
@@ -137,6 +150,15 @@ const Avatar = styled.img`
   border: 2px solid #ffffff;
   object-fit: contain;
   cursor: pointer;
+`;
+
+const LoginButton = styled.button`
+  min-width: 5rem;
+  min-height: 2rem;
+  background: transparent;
+  border: 1px solid rgb(210, 210, 210);
+  color: #ffffff;
+  border-radius: 3px;
 `;
 
 export default Header;
