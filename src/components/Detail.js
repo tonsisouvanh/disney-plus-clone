@@ -163,12 +163,14 @@ const Background = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     opacity: 40%;
   }
 `;
 
 const ContentContainer = styled.div`
   /* margin-top: 5rem; */
+  
   max-width: 48rem;
   .short-text {
     opacity: 90%;
@@ -177,7 +179,7 @@ const ContentContainer = styled.div`
   }
 
   .long-text {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1.4rem;
   }
 `;
@@ -219,7 +221,7 @@ const TrailerButton = styled(PlayButton)`
 `;
 
 const ImageTitle = styled.div`
-  width: 30vw;
+  width: 35vw;
   .movie-name-image {
     margin-top: 8rem;
     margin-bottom: 1rem;

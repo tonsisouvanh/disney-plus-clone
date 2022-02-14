@@ -57,6 +57,7 @@ const Carousel = styled(Slider)`
 
   .slick-list {
     overflow: visible;
+    position: relative;
   }
 
   button {

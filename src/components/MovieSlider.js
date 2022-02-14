@@ -97,21 +97,6 @@ const MovieSlider = () => {
           <Wrap>
             <img src="/images/movie-thelastjedai.jpg" alt=""></img>
           </Wrap>
-          <Wrap>
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
         </Carousel>
       </MovieContainer>
     </>

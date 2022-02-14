@@ -22,14 +22,14 @@ const Home = () => {
     };
     getMovies();
   }, []);
-
   return (
     <>
       <Container>
         <ImageSlider></ImageSlider>
         <Viewer></Viewer>
-        <Movies></Movies>
-        {/* <Movies></Movies> */}
+        <Movies header="Originals"></Movies>
+        <Movies header="Recommended for you"></Movies>
+        <Movies header="New to Disney Plus+"></Movies>
       </Container>
     </>
   );

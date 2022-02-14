@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 import { selectMovies } from "../features/movie/movieSlice";
 import { useSelector } from "react-redux";
 
-const Movies = () => {
+const Movies = ({header}) => {
   const movies = useSelector(selectMovies);
 
   return (
     <>
       <MovieContainer>
-        <h3>Recommended For You</h3>
+        <h3>{header}</h3>
         <Container>
           {movies &&
             movies.map((movie) => {
@@ -30,47 +30,6 @@ const Movies = () => {
                 </Wrap>
               );
             })}
-
-          {/* <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-ironman2.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-ironman3.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-mandalorian.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-thelastjedai.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-avatar.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-spiderman1.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-spiderman2.jpg" alt=""></img>
-          </Wrap>
-          <Wrap>
-            <CardHover className="card-hove-active"></CardHover>
-            <PlayCircleOutlineIcon className="playIcon" />
-            <img src="/images/movie-spiderman3.jpg" alt=""></img>
-          </Wrap> */}
         </Container>
       </MovieContainer>
     </>
@@ -82,7 +41,7 @@ const MovieContainer = styled.div`
   h3 {
     font-weight: 500;
     color: #e5e5e5;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
   }
 
   .link {
@@ -92,10 +51,6 @@ const MovieContainer = styled.div`
 `;
 const Container = styled.div`
   display: grid;
-
-  /* grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-template-rows: minmax(0, 10rem);
-  grid-gap: 1rem; */
 
   grid-auto-flow: column;
   grid-auto-columns: 16.5rem;
