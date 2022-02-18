@@ -21,7 +21,7 @@ const Home = () => {
       dispatch(setMovies(tempMovie));
     };
     getMovies();
-  }, []);
+  }, [dispatch, productCollectionRef]);
   return (
     <>
       <Container>

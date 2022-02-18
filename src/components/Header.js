@@ -115,7 +115,7 @@ const Header = () => {
         })
       );
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
