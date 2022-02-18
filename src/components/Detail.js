@@ -225,7 +225,7 @@ const ContentContainer = styled.div`
 
   .long-text {
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 `;
 
