@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ImageSlider from "../components/ImageSlider";
 import Viewer from "../components/Viewer";
@@ -27,7 +27,7 @@ const Home = () => {
       <Container>
         <ImageSlider></ImageSlider>
         <Viewer></Viewer>
-        <Movies header="Originals"></Movies>
+        <Movies header="Original"></Movies>
         <Movies header="Recommended for you"></Movies>
         <Movies header="New to Disney Plus+"></Movies>
       </Container>

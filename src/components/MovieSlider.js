@@ -97,6 +97,12 @@ const MovieSlider = () => {
           <Wrap>
             <img src="/images/movie-thelastjedai.jpg" alt=""></img>
           </Wrap>
+          <Wrap>
+            <img src="/images/movie-thelastjedai.jpg" alt=""></img>
+          </Wrap>
+          <Wrap>
+            <img src="/images/movie-thelastjedai.jpg" alt=""></img>
+          </Wrap>
         </Carousel>
       </MovieContainer>
     </>
@@ -122,20 +128,18 @@ const Wrap = styled.div`
 
     /* transition-duration: 500ms; */
 
-    /* &:hover {
+    &:hover {
       border: 4px solid rgba(249, 249, 249, 0.8);
-    } */
+    }
   }
 `;
 const Carousel = styled(Slider)`
   .slick-list .slick-track div {
-    /* margin: 0 0.2rem; */
-    height: 12rem;
-  }
+    width: 16rem;
 
-
-  .slick-track {
-    height: 5rem;
+    @media (max-width: 1068px) {
+      width: 13rem;
+    }
   }
 
   .slick-prev:before {

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const Viewer = () => {
   return (
     <>
@@ -49,8 +48,12 @@ const Container = styled.div`
   display: grid;
   margin: 2rem 0 0 0;
   padding: 1rem 0 1rem 0;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-gap: 25px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 const ViewCard = styled.div`

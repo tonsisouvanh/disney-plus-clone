@@ -6,7 +6,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
+// import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { makeStyles } from "@mui/styles";
 import Tabs from "@mui/material/Tabs";
@@ -15,6 +15,11 @@ import MovieSlider from "./MovieSlider";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
+// import Button from "@mui/material/Button";
+// import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+// style for material ui tab component
 const useStyles = makeStyles({
   TabStyle: {
     color: "white",
@@ -32,16 +37,36 @@ const useStyles = makeStyles({
   },
 });
 
+//style for modal popup in material ui
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "80%",
+  height: "80%",
+  bgcolor: "transparent",
+  border: "none",
+  borderRadius: "5px",
+};
+
 const Detail = () => {
+  //handle router & data
   const classes = useStyles();
   const { id } = useParams();
   const productCollectionRef = collection(db, "movies");
 
+  // handle tab component
   const [selectedTab, setSelectedTab] = useState("1");
   const [movies, setMovies] = useState([]);
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  // handle modal popup
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -49,8 +74,8 @@ const Detail = () => {
       setMovies(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getMovies();
-  }, []);
-  console.log("detail", movies);
+  }, [productCollectionRef]);
+
   return (
     <>
       {movies &&
@@ -58,7 +83,7 @@ const Detail = () => {
           .filter((movie) => movie.id === id)
           .map((movie) => {
             return (
-              <Container>
+              <Container key={movie.id}>
                 <Background>
                   <img src={movie.backgroundImage} alt="img"></img>
                 </Background>
@@ -77,10 +102,30 @@ const Detail = () => {
                       <img src="/images/play-icon-black.png" alt=""></img>
                       <span>PLAY</span>
                     </PlayButton>
-                    <TrailerButton>
-                      <img src="/images/play-icon-white.png" alt=""></img>
-                      <span>TRAILER</span>
-                    </TrailerButton>
+
+                    <div>
+                      <TrailerButton onClick={handleOpen}>
+                        <img src="/images/play-icon-white.png" alt=""></img>
+                        <span>TRAILER</span>
+                      </TrailerButton>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <iframe
+                          style={style}
+                          width="420"
+                          height="315"
+                          src={`https://www.youtube.com/embed/${movie.trailer}`}
+                          frameBorder="0"
+                          allow="autoplay; encrypted-media"
+                          allowFullScreen
+                          title="video"
+                        ></iframe>
+                      </Modal>
+                    </div>
                     <AddCircleOutlineIcon className="add-icon"></AddCircleOutlineIcon>
                   </ActionButton>
 
@@ -170,7 +215,7 @@ const Background = styled.div`
 
 const ContentContainer = styled.div`
   /* margin-top: 5rem; */
-  
+
   max-width: 48rem;
   .short-text {
     opacity: 90%;
