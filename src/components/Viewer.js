@@ -6,25 +6,25 @@ const Viewer = () => {
     <>
       <Container>
         <ViewCard>
-          <img src="/images/viewers-disney.png"></img>
+          <img src="/images/viewers-disney.png" alt="img"></img>
           <video autoPlay muted loop>
             <source src="/videos/1564674844-disney.mp4" type="video/mp4" />
           </video>
         </ViewCard>
         <ViewCard>
-          <img src="/images/viewers-pixar.png"></img>
+          <img src="/images/viewers-pixar.png" alt="img"></img>
           <video autoPlay muted loop>
             <source src="/videos/1564676714-pixar.mp4" type="video/mp4" />
           </video>
         </ViewCard>
         <ViewCard>
-          <img src="/images/viewers-starwars.png"></img>
+          <img src="/images/viewers-starwars.png" alt="img"></img>
           <video autoPlay muted loop>
             <source src="/videos/1608229455-star-wars.mp4" type="video/mp4" />
           </video>
         </ViewCard>
         <ViewCard>
-          <img src="/images/viewers-national.png"></img>
+          <img src="/images/viewers-national.png" alt="img"></img>
           <video autoPlay muted loop>
             <source
               src="/videos/1564676296-national-geographic.mp4"
@@ -33,7 +33,7 @@ const Viewer = () => {
           </video>
         </ViewCard>
         <ViewCard>
-          <img src="/images/viewers-marvel.png"></img>
+          <img src="/images/viewers-marvel.png" alt="img"></img>
           <video autoPlay muted loop>
             <source src="/videos/1564676115-marvel.mp4" type="video/mp4" />
           </video>
@@ -43,7 +43,7 @@ const Viewer = () => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div` alt="img"
   width: 100%;
   display: grid;
   margin: 2rem 0 0 0;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -17,7 +17,8 @@ import {
 } from "../features/user/userSlice";
 
 import { auth, provider } from "../firebase";
-import { signInWithPopup, signOut } from "firebase/auth";
+// import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 
 const iconWidth = "1.3rem";
 const menusList = [
